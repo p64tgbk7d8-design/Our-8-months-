@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>eight months with you ♡</title>
+<style>
+:root{--pink:#b85f7e;--rose:#e9b8c8;--cream:#fff9f7;--pale:#fff0f5;--ink:#815064}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top,#fffdfd,#ffeef4 65%,#fff8f2);font-family:Georgia,'Times New Roman',serif;color:var(--ink);min-height:100vh}
+main{width:min(760px,92%);margin:24px auto 48px}
+.cover{display:block;width:100%;height:auto;border-radius:22px;box-shadow:0 12px 34px #b85f7e22;border:1px solid #f1d4df}
+.intro{text-align:center;margin:22px 0 18px;font-size:1rem;line-height:1.6}
+h1{font-size:clamp(1.8rem,6vw,3rem);font-weight:normal;color:var(--pink);margin:0 0 8px}
+.subtitle{font-size:.98rem;color:#a8778c}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+button{font:inherit;cursor:pointer}
+.tile{border:1px solid #edc7d5;background:#fffdfd;border-radius:18px;padding:24px 12px;color:var(--pink);box-shadow:0 5px 14px #b85f7e12;min-height:150px;transition:transform .15s,box-shadow .15s}
+.tile:active{transform:scale(.98)}
+.tile .symbol{font-size:2rem;display:block;margin-bottom:10px}
+.tile strong{font-size:1.08rem;font-weight:normal}
+.tile small{display:block;margin-top:8px;color:#ad8294}
+.footer{text-align:center;font-size:.9rem;margin:24px 0;color:#b07b90}
+.panel{display:none;margin-top:16px;background:#fffdfd;border:1px solid #edc7d5;border-radius:18px;padding:22px;line-height:1.8;white-space:pre-line;box-shadow:0 5px 18px #b85f7e12}
+.panel.open{display:block;animation:fade .25s ease-out}
+.panel h2{font-weight:normal;color:var(--pink);margin:0 0 10px}
+.song-link{display:inline-block;background:#b85f7e;color:white;text-decoration:none;border-radius:999px;padding:12px 20px;margin-top:12px}
+.note{font: .8rem system-ui,sans-serif;color:#a78391;text-align:center;margin-top:22px}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){main{margin-top:12px}.cards{gap:10px}.tile{padding:18px 8px;min-height:140px}.panel{padding:17px}}
+</style>
+</head>
+<body>
+<main>
+  <img class="cover" src="cover.png" alt="Pastel pink handmade anniversary card">
+  <section class="intro">
+    <h1>eight months with you ♡</h1>
+    <div class="subtitle">i made something special for us</div>
+  </section>
+
+  <section class="cards" aria-label="Your gifts">
+    <button class="tile" onclick="togglePanel('letter')" aria-controls="letter" aria-expanded="false">
+      <span class="symbol">✉ ♡</span><strong>a letter for you</strong><small>open my heart</small>
+    </button>
+    <button class="tile" onclick="togglePanel('song')" aria-controls="song" aria-expanded="false">
+      <span class="symbol">♫ ♡</span><strong>a song for you</strong><small>our little song</small>
+    </button>
+  </section>
+
+  <section id="letter" class="panel">
+    <h2>my letter to you ♡</h2>
+    <!-- EDIT YOUR LETTER BELOW -->
+    happy eight months, my love.
+
+    thank you for being part of my days and for giving me so many little moments to keep in my heart. even ordinary days feel special when i get to share them with you.
+
+    i hope this little gift reminds you how loved you are. if i could choose again, i'd still want to make more memories with you.
+
+    with all my love,
+    your girl ♡
+  </section>
+
+  <section id="song" class="panel">
+    <h2>a song that reminds me of you ♡</h2>
+    i picked this song for you. i hope it feels like a little piece of us.
+    <br>
+    <!-- Replace the URL in the script below with your song's share link. -->
+    <a class="song-link" id="songLink" href="https://open.spotify.com/" target="_blank" rel="noopener">play our song ♫</a>
+  </section>
+
+  <div class="footer">made with love, only for you ୨୧</div>
+  <div class="note">You can edit the letter and song link in index.html before publishing.</div>
+</main>
+<script>
+// 1) Replace this with the share link for your chosen song.
+const SONG_URL = "https://open.spotify.com/";
+document.getElementById("songLink").href = SONG_URL;
+
+function togglePanel(id){
+  const panel = document.getElementById(id);
+  const wasOpen = panel.classList.contains("open");
+  document.querySelectorAll(".panel").forEach(p => p.classList.remove("open"));
+  document.querySelectorAll(".tile").forEach(b => b.setAttribute("aria-expanded","false"));
+  if(!wasOpen){
+    panel.classList.add("open");
+    document.querySelectorAll(".tile").forEach(b=>{
+      if(b.getAttribute("aria-controls")===id) b.setAttribute("aria-expanded","true");
+    });
+    panel.scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
+}
+</script>
+</body>
+</html>
